@@ -29,9 +29,12 @@ def subscribe_intent_callback(hermes, intentMessage):
 
 
 def action_wrapper(hermes, intentMessage, conf):
-    plaque = str(intentMessage.slots.plaque.first().value)
+    plaque_bloc_g = intentMessage.slots.bloc_gauche.first().rawValue
+    plaque_num = intentMessage.slots.numero.first().value
+    plaque_bloc_g = intentMessage.slots.bloc_droit.first().rawValue
 
-    result_sentence = "Est-ce bien la plaque {} ?".format(plaque)
+    result_sentence = "Est-ce bien la plaque {0} {1} {2} ?".format(plaque_bloc_g,
+            str(plaque_num),plaque_bloc_d)
     
     current_session_id = intentMessage.session_id
     hermes.publish_end_session(current_session_id, result_sentence)
