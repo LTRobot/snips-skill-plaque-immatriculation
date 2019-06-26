@@ -29,16 +29,9 @@ def subscribe_intent_callback(hermes, intentMessage):
 
 
 def action_wrapper(hermes, intentMessage, conf):
-    1_l = str(intentMessage.slots.first.first().value)
-    2_l =str(intentMessage.slots.second.first().value)
-    3_l = str(intentMessage.slots.third.first().value)
-    4_l = str(intentMessage.slots.fourth.first().value)
-    
-    
-    
-    plaque_d_immatriculation = 1_l + 2_l + "_"+ 3_l + 4_l
-    
-    result_sentence = "Est ce bien {}{}{}{}.".format(1_l,2_l,3_l,4_l)
+    plaque = str(intentMessage.slots.plaque.first().value)
+
+    result_sentence = "Est-ce bien {} la plaque ?".format(plaque)
     
     current_session_id = intentMessage.session_id
     hermes.publish_end_session(current_session_id, result_sentence)
