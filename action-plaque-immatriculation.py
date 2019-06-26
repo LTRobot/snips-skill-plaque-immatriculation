@@ -31,7 +31,7 @@ def subscribe_intent_callback(hermes, intentMessage):
 def action_wrapper(hermes, intentMessage, conf):
     plaque = str(intentMessage.slots.plaque.first().value)
 
-    result_sentence = "Est-ce bien {} la plaque ?".format(plaque)
+    result_sentence = "Est-ce bien la plaque {} ?".format(plaque)
     
     current_session_id = intentMessage.session_id
     hermes.publish_end_session(current_session_id, result_sentence)
@@ -41,5 +41,5 @@ def action_wrapper(hermes, intentMessage, conf):
 
 if __name__ == "__main__":
     with Hermes("localhost:1883") as h:
-        h.subscribe_intent("Noona-nk:plaque_d_immatriculation", subscribe_intent_callback) \
+        h.subscribe_intent("LTRobot:askPlate", subscribe_intent_callback) \
          .start()
