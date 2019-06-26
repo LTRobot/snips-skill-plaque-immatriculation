@@ -29,7 +29,7 @@ def subscribe_intent_callback(hermes, intentMessage):
 
 
 def action_wrapper(hermes, intentMessage, conf):
-    plaque = str(intentMessage.slots.plaque.first().value)
+    plaque = str(intentMessage.slots.plaque.value.value)
 
     result_sentence = "Est-ce bien la plaque {} ?".format(plaque)
     
