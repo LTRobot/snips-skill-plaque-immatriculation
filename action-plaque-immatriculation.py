@@ -51,9 +51,12 @@ def action_wrapper(hermes, intentMessage, conf):
     plaque_letter_3 = intentMessage.slots.letter_3.first().value
     plaque_letter_4 = intentMessage.slots.letter_4.first().value
 
-    result_sentence = "Est-ce bien la plaque {0} {1} {2} {3} {4} ?".format(plaque_letter_1[0],
-            plaque_letter_2[0], plaque_num, plaque_letter_3[0], plaque_letter_4[0])
-    
+    if(len(plaque_num) == 3):
+        result_sentence = "Est-ce bien la plaque {0} {1} {2} {3} {4} ?".format(plaque_letter_1[0],
+                plaque_letter_2[0], plaque_num, plaque_letter_3[0], plaque_letter_4[0])
+    else:
+        result_sentence = u"Ce format est incorret, veuillez réessayer."
+
     current_session_id = intentMessage.session_id
     hermes.publish_end_session(current_session_id, result_sentence)
     
