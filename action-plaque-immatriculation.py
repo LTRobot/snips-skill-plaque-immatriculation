@@ -51,8 +51,9 @@ def action_wrapper(hermes, intentMessage, conf):
     plaque_letter_3 = intentMessage.slots.letter_3.first().value
     plaque_letter_4 = intentMessage.slots.letter_4.first().value
 
-    if(plaque_num != null && len(plaque_num) == 3 && plaque_letter_1 != null && plaque_letter_2 != null 
-            && plaque_letter_3 != null && plaque_letter_4 != null):
+    if(plaque_num != "" && len(plaque_num) == 3 && plaque_letter_1 != "" && plaque_letter_2 != "" 
+            && plaque_letter_3 != "" && plaque_letter_4 != ""):
+
         result_sentence = "Est-ce bien la plaque {0} {1} {2} {3} {4} ?".format(plaque_letter_1[0],
                 plaque_letter_2[0], plaque_num, plaque_letter_3[0], plaque_letter_4[0])
     else:
